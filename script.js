@@ -108,7 +108,7 @@ function speakThis(message) {
         speech.text = finalText;
     }
 
-    else if(message.includes('meteo')) {
+    else if(message.includes('meteo')|| message.includes('che tempo fa')){
       window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
         const finalText = 'Lo cerco';
         speech.text = finalText;
@@ -126,6 +126,22 @@ function speakThis(message) {
         const year = new Date().toLocaleString(undefined, {year: "numeric"})
         const finalText = 'oggi è il' + date + " . dell'anno" + year;
         speech.text = finalText;
+    }
+
+    else if(message.includes('mia posizione ')|| message.includes('dove mi trovo')|| message.includes('dove sono')|| message.includes('dove siamo')) {
+      if(!navigator.geolocation) {
+        return false;
+      } else {
+        navigator.geolocation.getCurrentPosition(success);
+      }
+
+      function success(position) {
+        const latitude  = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const finalText = latitude + ' gradi di latitudine e '+ longitude + ' gradi di longitudine';
+        speech.text = finalText;
+        window.open(`https://www.google.com/search?q=${latitude} , ${longitude}`, "_blank");
+      }
     }
 
     else {
