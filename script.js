@@ -1,6 +1,15 @@
+const btnWelcome = document.querySelector('#sirioWelcome');
 const btn = document.querySelector('#sirio');
 const content = document.querySelector('.message');
-document.getElementById('sirio').play();
+
+btn.style.display = 'none';
+
+btnWelcome.addEventListener('click', ()=>{
+  wishMe();
+  btnWelcome.style.display = 'none';
+  btn.style.display = 'block';
+})
+
 
 function speak(sentence) {
     const text_speak = new SpeechSynthesisUtterance(sentence);
@@ -10,8 +19,8 @@ function speak(sentence) {
     window.speechSynthesis.speak(text_speak);
 }
 
-window.addEventListener('load', ()=>{
-    wishMe();
+btn.addEventListener('click', ()=>{
+  recognition.start();
 })
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -24,41 +33,40 @@ recognition.onresult = (event) => {
     speakThis(transcript.toLowerCase());
 }
 
-btn.addEventListener('click', ()=>{
-    recognition.start();
-})
 
 function wishMe() {
     var day = new Date();
     var hr = day.getHours();
 
     if(hr >= 0 && hr < 12) {
-        speak("Buongiorno");
+        speak("Buongiorno signore");
     }
 
     else if(hr == 12) {
-        speak("Spero sia una buona giornata");
+        speak("Salve, spero sia una buona giornata");
     }
 
     else if(hr > 12 && hr <= 17) {
-        speak("Buon Pomeriggio");
+        speak("Buon Pomeriggio signore");
     }
 
     else {
-        speak("Buona sera");
+        speak("Buona sera signore");
     }
+    recognition.start();
 }
 
 
 function speakThis(message) {
     const speech = new SpeechSynthesisUtterance();
 
-    speech.text = "Non ti sento, Riprova";
+    speech.text = "Non ti sento perdonami";
 
     //Personal
 
-    if(message.includes('ciao')) {
-        const finalText = "Salve, sono Morgan.";
+    if(message.includes('ciao') || message.includes('buongiorno')
+    || message.includes('buonasera') || message.includes('buonpomeriggio') || message.includes('buona giornata')) {
+        const finalText = "attendo un suo comando signore";
         speech.text = finalText;
     }
 
@@ -67,7 +75,7 @@ function speakThis(message) {
         speech.text = finalText;
     }
 
-    else if(message.includes('tuo nome')) {
+    else if(message.includes('tuo nome') || message.includes('ti chiami')) {
         const finalText = "Sono Morgan";
         speech.text = finalText;
     }
@@ -138,7 +146,7 @@ function speakThis(message) {
       function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
-        const finalText = latitude + ' gradi di latitudine e '+ longitude + ' gradi di longitudine';
+        const finalText = 'qui';
         speech.text = finalText;
         window.open(`https://www.google.com/search?q=${latitude} , ${longitude}`, "_blank");
       }
