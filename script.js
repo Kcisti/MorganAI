@@ -10,7 +10,6 @@ btnWelcome.addEventListener('click', ()=>{
   btn.style.display = 'block';
 })
 
-
 function speak(sentence) {
     const text_speak = new SpeechSynthesisUtterance(sentence);
     text_speak.lang = 'it_IT';
@@ -32,7 +31,6 @@ recognition.onresult = (event) => {
     content.textContent = transcript;
     speakThis(transcript.toLowerCase());
 }
-
 
 function wishMe() {
     var day = new Date();
@@ -56,16 +54,12 @@ function wishMe() {
     recognition.start();
 }
 
-
 function speakThis(message) {
     const speech = new SpeechSynthesisUtterance();
-
     speech.text = "Non ti sento perdonami";
 
-    //Personal
-
-    if(message.includes('ciao') || message.includes('buongiorno')
-    || message.includes('buonasera') || message.includes('buonpomeriggio') || message.includes('buona giornata')) {
+    //TALKING
+    if(message.includes('ciao') || message.includes('buongiorno')|| message.includes('buonasera') || message.includes('buonpomeriggio') || message.includes('buona giornata')) {
         const finalText = "attendo un suo comando signore";
         speech.text = finalText;
     }
@@ -74,69 +68,70 @@ function speakThis(message) {
         const finalText = "Tutto bene";
         speech.text = finalText;
     }
-
     else if(message.includes('tuo nome') || message.includes('ti chiami')) {
         const finalText = "Sono Morgan";
         speech.text = finalText;
     }
-
     else if(message.includes('anni hai')) {
         const finalText = "Ho diciotto anni";
         speech.text = finalText;
     }
-
     else if(message.includes('cosa sai fare') || message.includes('cosa puoi fare')) {
         const finalText = "Solo cio che è scritto tra le mie linee di codice";
         speech.text = finalText;
     }
 
-    //util functions
 
+    //OPEN APP
     else if(message.includes('google')) {
         window.open("https://google.com", "_blank");
-        const finalText = "Lo apro";
+        const finalText = "Apro google";
         speech.text = finalText;
     }
-
     else if(message.includes('instagram')) {
         window.open("https://instagram.com", "_blank");
-        const finalText = "Lo apro";
+        const finalText = "Apro instagram";
         speech.text = finalText;
     }
+    else if(message.includes('wikipedia')) {
+        window.open(`https://en.wikipedia.org/wiki`, "_blank");
+        const finalText = "Apro wikipedia";
+        speech.text = finalText;
+    }
+    else if(message.includes('cam') || message.includes('fotocamera')) {
+        window.open(`https://kcisti.github.io/cam/`, "_blank");
+        const finalText = 'Apro fotocamera criptata';
+        speech.text = finalText;
+    }
+    else if(message.includes('scacchi')) {
+        window.open(`https://play.chess.com`, "_blank");
+        const finalText = 'Apro scacchi';
+        speech.text = finalText;
+    }
+    else if(message.includes('tiktok') || message.includes('tik tok')) {
+        window.open(`https://www.tiktok.com`, "_blank");
+        const finalText = 'Apro tiktok';
+        speech.text = finalText;
+    }
+    else if(message.includes('spotifi') || message.includes('musica')){
+      window.open('https://open.spotify.com/','_blank');
+      const finalText = 'Apro spotify';
+      speech.text = finalText;
+    }
 
+
+    //GENERIC RESEARCH
     else if(message.includes('cosa è') || message.includes('chi è') || message.includes('dove è')) {
         window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
         const finalText = "Cerco su internet riguardo " + message;
         speech.text = finalText;
     }
-
-    else if(message.includes('wikipedia')) {
-        window.open(`https://en.wikipedia.org/wiki`, "_blank");
-        const finalText = "Apro wikipedia cerca tu";
-        speech.text = finalText;
-    }
-
     else if(message.includes('meteo')|| message.includes('che tempo fa')){
       window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
         const finalText = 'Lo cerco';
         speech.text = finalText;
     }
-
-    else if(message.includes('ora')) {
-        const timeHour = new Date().toLocaleString(undefined, {hour: "numeric"})
-        const timeMinute = new Date().toLocaleString(undefined, {minute: "numeric"})
-        const finalText = 'sono le' + timeHour + 'e'+ timeMinute + 'minuti';
-        speech.text = finalText;
-    }
-
-    else if(message.includes('data')) {
-        const date = new Date().toLocaleString(undefined, {month: "long", day: "numeric"})
-        const year = new Date().toLocaleString(undefined, {year: "numeric"})
-        const finalText = 'oggi è il' + date + " . dell'anno" + year;
-        speech.text = finalText;
-    }
-
-    else if(message.includes('mia posizione ')|| message.includes('dove mi trovo')|| message.includes('dove sono')|| message.includes('dove siamo')) {
+    else if(message.includes('mia posizione ')|| message.includes('dove mi trovo') || message.includes('dove sono')|| message.includes('dove siamo')) {
       if(!navigator.geolocation) {
         return false;
       } else {
@@ -152,6 +147,23 @@ function speakThis(message) {
       }
     }
 
+
+    //TIME RESEARCH
+    else if(message.includes('ora')) {
+        const timeHour = new Date().toLocaleString(undefined, {hour: "numeric"})
+        const timeMinute = new Date().toLocaleString(undefined, {minute: "numeric"})
+        const finalText = 'sono le' + timeHour + 'e'+ timeMinute + 'minuti';
+        speech.text = finalText;
+    }
+    else if(message.includes('data')) {
+        const date = new Date().toLocaleString(undefined, {month: "long", day: "numeric"})
+        const year = new Date().toLocaleString(undefined, {year: "numeric"})
+        const finalText = 'oggi è il' + date + " . dell'anno" + year;
+        speech.text = finalText;
+    }
+
+
+    //end
     else {
         const finalText = "Mi spiace non so aiutarti";
         speech.text = finalText;
