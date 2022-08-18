@@ -65,11 +65,20 @@ function speakThis(message) {
     }
 
     else if(message.includes('come va') || message.includes('come stai') || message.includes('come te la passi')) {
-        const finalText = "Tutto bene";
+        const finalText = "Tutto bene, spero anche lei";
         speech.text = finalText;
     }
+    else if(message.includes('no')) {
+        const finalText = "Scusi signore, ho errato";
+        speech.text = finalText;
+    }
+    else if(message.includes('merda')) {
+        const finalText = "posso aiutarla con la sua merda signore?";
+        speech.text = finalText;
+    }
+
     else if(message.includes('tuo nome') || message.includes('ti chiami')) {
-        const finalText = "Sono Morgan";
+        const finalText = "Sono Morgan. Io la chiamerò amico del mio signore";
         speech.text = finalText;
     }
     else if(message.includes('anni hai')) {
@@ -84,39 +93,34 @@ function speakThis(message) {
 
     //OPEN APP
     else if(message.includes('google')) {
-        window.open("https://google.com", "_blank");
-        const finalText = "Apro google";
-        speech.text = finalText;
+      const finalText = "Apro google";
+      speech.text = finalText;
+      window.open("https://google.com", "_blank");
     }
     else if(message.includes('instagram')) {
-        window.open("https://instagram.com", "_blank");
-        const finalText = "Apro instagram";
-        speech.text = finalText;
+      const finalText = "Apro instagram";
+      speech.text = finalText;
+      window.open("https://instagram.com", "_blank");
     }
     else if(message.includes('wikipedia')) {
-        window.open(`https://en.wikipedia.org/wiki`, "_blank");
-        const finalText = "Apro wikipedia";
-        speech.text = finalText;
+      const finalText = "Apro wikipedia";
+      speech.text = finalText;
+      window.open(`https://en.wikipedia.org/wiki`, "_blank");
     }
     else if(message.includes('cam') || message.includes('fotocamera')) {
-        window.open(`https://kcisti.github.io/cam/`, "_blank");
-        const finalText = 'Apro fotocamera criptata';
-        speech.text = finalText;
+      const finalText = 'Apro fotocamera criptata';
+      speech.text = finalText;
+      window.open(`https://kcisti.github.io/cam/`, "_blank");
     }
     else if(message.includes('scacchi')) {
-        window.open(`https://play.chess.com`, "_blank");
-        const finalText = 'Apro scacchi';
-        speech.text = finalText;
+      const finalText = 'Apro scacchi';
+      speech.text = finalText;
+      window.open(`https://chess.com`, "_blank");
     }
     else if(message.includes('tiktok') || message.includes('tik tok')) {
-        window.open(`https://www.tiktok.com`, "_blank");
-        const finalText = 'Apro tiktok';
-        speech.text = finalText;
-    }
-    else if(message.includes('spotifi') || message.includes('musica')){
-      window.open('https://open.spotify.com/','_blank');
-      const finalText = 'Apro spotify';
+      const finalText = 'Apro tiktok';
       speech.text = finalText;
+      window.open(`https://www.tiktok.com`, "_blank");
     }
 
 
@@ -127,9 +131,9 @@ function speakThis(message) {
         speech.text = finalText;
     }
     else if(message.includes('meteo')|| message.includes('che tempo fa')){
+      const finalText = 'Spero in un temporale, ma lo cerco';
+      speech.text = finalText;
       window.open(`https://www.google.com/search?q=${message.replace(" ", "+")}`, "_blank");
-        const finalText = 'Lo cerco';
-        speech.text = finalText;
     }
     else if(message.includes('mia posizione ')|| message.includes('dove mi trovo') || message.includes('dove sono')|| message.includes('dove siamo')) {
       if(!navigator.geolocation) {
