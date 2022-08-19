@@ -44,7 +44,7 @@ function wishMe() {
         speak("Salve, spero sia una buona giornata");
     }
 
-    else if(hr > 12 && hr <= 17) {
+    else if(hr > 12 && hr <= 19) {
         speak("Buon Pomeriggio signore");
     }
 
@@ -68,11 +68,19 @@ function speakThis(message) {
         const finalText = "Tutto bene, spero anche lei";
         speech.text = finalText;
     }
-    else if(message.includes('no')) {
+    else if(message.includes('no morgan')) {
         const finalText = "Scusi signore, ho errato";
         speech.text = finalText;
     }
-    else if(message.includes('merda')) {
+    else if(message.includes('grazie morgan')) {
+        const finalText = "Di niente signore";
+        speech.text = finalText;
+    }
+    else if(message.includes('bravino')) {
+        const finalText = "Grazie signore, anche lei lo è stato a darmi vita";
+        speech.text = finalText;
+    }
+    else if(message.includes('male')) {
         const finalText = "posso aiutarla con la sua merda signore?";
         speech.text = finalText;
     }
@@ -112,10 +120,15 @@ function speakThis(message) {
       speech.text = finalText;
       window.open(`https://kcisti.github.io/cam/`, "_blank");
     }
-    else if(message.includes('scacchi')) {
-      const finalText = 'Apro scacchi';
+    else if(message.includes('amazon')) {
+      const finalText = 'Apro amazon';
       speech.text = finalText;
-      window.open(`https://chess.com`, "_blank");
+      window.open(`https://amazon.it`, "_blank");
+    }
+    else if(message.includes('youtube')) {
+      const finalText = 'Apro youtube';
+      speech.text = finalText;
+      window.open(`https://www.youtube.com/`, "_blank");
     }
     else if(message.includes('tiktok') || message.includes('tik tok')) {
       const finalText = 'Apro tiktok';
@@ -179,4 +192,9 @@ function speakThis(message) {
     speech.volume=1;
 
     window.speechSynthesis.speak(speech);
+}
+
+recognition.onend = function(){
+  console.log('restart');
+  recognition.start();
 }
