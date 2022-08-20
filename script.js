@@ -56,7 +56,7 @@ function wishMe() {
 
 function speakThis(message) {
     const speech = new SpeechSynthesisUtterance();
-    speech.text = "Non ti sento perdonami";
+    speech.text = "";
 
     //TALKING
     if(message.includes('ciao') || message.includes('buongiorno')|| message.includes('buonasera') || message.includes('buonpomeriggio') || message.includes('buona giornata')) {
@@ -182,8 +182,7 @@ function speakThis(message) {
 
     //end
     else {
-        const finalText = "Mi spiace non so aiutarti";
-        speech.text = finalText;
+        false;
     }
 
     speech.lang = 'it_IT';
