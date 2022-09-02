@@ -192,8 +192,3 @@ function speakThis(message) {
 
     window.speechSynthesis.speak(speech);
 }
-
-recognition.onend = function(){
-  console.log('restart');
-  recognition.start();
-}
