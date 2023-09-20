@@ -3,30 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="content-type" content="text/html" />
+    <meta http-equiv="content-type"/>
     <title>Private Assistant</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="mobile.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head>
 
 <body>
-  <center><div class="main">
-    <video id="sirioWelcome" muted autoplay loop src="sirio.mp4"></video>
-    <video id="sirio" muted autoplay loop src="sirio.mp4"></video>
-
-    <div class="header">
-      <h1>Morgan T.D.</h1>
-      <p>ASSISTENTE PRIVATO</p>
-    </div>
-
-    <div class="messages">
-      <h1 class="message"></h1>
-    </div>
-  </div></center>
+  <div id="text-to-speech">
+    <textarea id="text"></textarea>
+    <button id="speak-button">Speak</button>
+  </div>  
 </body>
   <script src="script.js"></script>
 </html>

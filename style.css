@@ -1,48 +1,52 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+@font-face{
+  font-family: "cy-grotesk-key-regular";
+  src: local("cy-grotesk-key-regular"), url(font/cy-grotesk-key-regular.ttf);
 }
-
+*{
+  font-family:"cy-grotesk-key-regular" ;
+  margin: 0; padding: 0;
+  -webkit-text-size-adjust:none;
+  font-size-adjust: none;
+}
+:root{
+  --smokeGrey : hsl(240, 2%, 12%);
+  --lightGrey : #dfdfdf;
+  
+  --madWhite : #45FB83;
+  --madBlack : #000000;
+  --madGrey : #000000;
+}
 body{
-  overflow: hidden;
-  background: #000;
+  background-color: var(--madBlack);
+  overflow: auto;
 }
-.main {
-  width: 100%;
-  background: #000;
-}
-
-#sirioWelcome{
-  margin-top: 25%;
-  width: 60%;
+#text-to-speech {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#sirio{
-  margin-top: 25%;
-  width: 60%;
-}
-
-.header {
+#text {
+  width: 40%;
+  height: 100px;
   padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--smokeGrey);
+  color: #d2d2d2;
+  border-radius: 0%;
+  outline: 0;
 }
 
-.header h1 {
-  color: #D2D2D2;
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 80px;
-}
-.header p {
-  color: #D2D2D2;
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 50px;
-}
-.message {
-  color: #D2D2D2;
-  font-size: 50px;
-  margin-top: 80px;
+#speak-button {
+  width: 40%;
   text-transform: uppercase;
+  padding: 10px;
+  font-size: 18px;
+  background-color: var(--madWhite);
+  color: var(--madBlack);
+  border: none;
+  cursor: pointer;
+  border-radius: 5rem;
 }
+
