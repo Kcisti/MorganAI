@@ -12,7 +12,7 @@ speakButton.addEventListener("click", function() {
 
   // Set the text and voice of the utterance
   utterance.text = text;
-  utterance.lang = 'en_GB';
+  utterance.lang = 'it_IT';
   utterance.pitch = '0';
   utterance.rate = '0.90';
   utterance.voice = window.speechSynthesis.getVoices()[11];

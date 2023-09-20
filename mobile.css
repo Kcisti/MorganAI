@@ -3,6 +3,7 @@
       #text {
         width: 90%;
         height: 8rem;
+        text-transform: uppercase;
         font-size: 1.5rem;
       }
       
